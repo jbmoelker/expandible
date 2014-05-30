@@ -1,0 +1,30 @@
+{
+  "name": "expandible",
+  "version": "0.0.0",
+  "description": "Turn plain markup into an interactive expandible component using just data-attributes or a JS API.",
+  "main": "expandible.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jbmoelker/expandible.git"
+  },
+  "keywords": [
+    "expandible",
+    "collapsible",
+    "accessible",
+    "aria"
+  ],
+  "author": "Jasper Moelker",
+  "licenses": [
+	{
+      "type": "MIT",
+      "url": "https://github.com/jbmoelker/expandible/LICENSE"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/jbmoelker/expandible/issues"
+  },
+  "homepage": "https://github.com/jbmoelker/expandible"
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Expendible</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body class="container">
+    <h1><code>Expendible</code></h1>
+    <section>
+        <h2>Basic implementation</h2>
+        <div class="expandible" data-expandible>
+            <h3 class="expandible-handle"
+                data-expandible-toggle>
+                Features A-Z
+            </h3>
+            <div class="expandible-content"
+                 data-expandible-content>
+                <ul>
+                    <li>Accessible</li>
+                    <li>Beautiful</li>
+                    <li><a href="http://voorhoede.nl">Extendible</a></li>
+                    <li>Indexable</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        var require = {
+            paths: {
+                airhooks: 'bower_components/airhooks/airhooks'
+            }
+        };
+    </script>
+    <script src="bower_components/requirejs/require.js"></script>
+    <script>
+        require(['expandible'], function(Expandible){
+            // automatically turn all elements with `data-expandible-element` attr into expandible components.
+            var elements = document.querySelectorAll('[data-expandible]');
+            for (var index = 0, length = elements.length; index < length; index++) {
+                new Expandible(elements[index]);
+            }
+        });
+    </script>
+</body>
+</html>
