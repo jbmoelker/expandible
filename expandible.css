@@ -1,22 +1,18 @@
 /**
- * Component base style, always applied.
- */
-.expandible {}
-.expandible-handle {}
-
-/** 
  * Enhance styling, only apply if component is expandible. 
  */
-.expandible.is-expandible .expandible-handle {
+.is-expandible .expandible-handle {
 	cursor: pointer;
 }
-.expandible.is-expandible .expandible-handle:before {
+.is-expandible .expandible-handle:before {
 	content: "+";
 	float: right;
 	margin-right: .5em;
 }
-.expandible.is-expandible .expandible-content {
-	/* display: none; */
+.example1.is-expandible .expandible-content {
+	 display: none;
+}
+.example2.is-expandible .expandible-content {
 	max-height: 0em;
 	overflow: hidden;
 	-webkit-transition: max-height 0.6s ease-out;
@@ -28,10 +24,12 @@
 /** 
  * Expanded styling, only apply when component is expandible and in expanded state. 
  */
-.expandible.is-expandible.is-expanded .expandible-handle:before {
+.is-expandible.is-expanded .expandible-handle:before {
 	content: "-";
 }
-.expandible.is-expanded .expandible-content {
-	/* display: block; */
+.example1.is-expanded .expandible-content {
+	 display: block;
+}
+.example2.is-expanded .expandible-content {
 	max-height: 10em;
 }
