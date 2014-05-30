@@ -87,6 +87,29 @@
         </div>
     </section>
 
+    <section>
+        <h2>Example 3: Slide animation (CSS transition)</h2>
+        <div class="example3 panel panel-default" data-expandible>
+            <div class="panel-heading expandible-handle"
+                 data-expandible-toggle>
+                <h3 class="panel-title">Features A-Z</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="expandible-content"
+                    data-expandible-content>
+                    <li>Accessible</li>
+                    <li>Beautiful</li>
+                    <li><a href="http://voorhoede.nl">Extendible</a></li>
+                    <li>Indexable</li>
+                    <li>Can animate</li>
+                    <li>Has keyboard support</li>
+                    <li>Has touch support</li>
+                </ul>
+                <span class="expandible-handle-inline" data-expandible-handle="toggle">show all</span>
+            </div>
+        </div>
+    </section>
+
     <script>
         var require = {
             paths: {
@@ -102,6 +125,8 @@
             for (var index = 0, length = elements.length; index < length; index++) {
                 new Expandible(elements[index]);
             }
+            // or we could simply use:
+            // Expandible();
         });
     </script>
 </body>
