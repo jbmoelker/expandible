@@ -15,7 +15,7 @@
         <p>Expandible component is collapsed by default. To expand in initial state add <code>is-expanded</code> class.</p>
         <div class="example1 panel panel-default" data-expandible>
             <div class="panel-heading expandible-handle"
-                data-expandible-toggle>
+                data-expandible-handle="toggle">
                 <h3 class="panel-title">Features A-Z</h3>
             </div>
             <div class="expandible-content"
@@ -32,7 +32,7 @@
         </div>
         <div class="example1 panel panel-default is-expanded" data-expandible>
             <div class="panel-heading expandible-handle"
-                 data-expandible-toggle>
+                 data-expandible-handle="toggle">
                 <h3 class="panel-title">Features A-Z</h3>
             </div>
             <div class="expandible-content"
@@ -53,7 +53,7 @@
         <h2>Example 2: Slide animation (CSS transition)</h2>
         <div class="example2 panel panel-default" data-expandible>
             <div class="panel-heading expandible-handle"
-                 data-expandible-toggle>
+                 data-expandible-handle="toggle">
                 <h3 class="panel-title">Features A-Z</h3>
             </div>
             <div class="expandible-content"
@@ -70,7 +70,7 @@
         </div>
         <div class="example2 panel panel-default is-expanded" data-expandible>
             <div class="panel-heading expandible-handle"
-                 data-expandible-toggle>
+                 data-expandible-handle="toggle">
                 <h3 class="panel-title">Features A-Z</h3>
             </div>
             <div class="expandible-content"
@@ -88,10 +88,10 @@
     </section>
 
     <section>
-        <h2>Example 3: Slide animation (CSS transition)</h2>
+        <h2>Example 3: Semi expanded panel</h2>
         <div class="example3 panel panel-default" data-expandible>
             <div class="panel-heading expandible-handle"
-                 data-expandible-toggle>
+                 data-expandible-handle="toggle">
                 <h3 class="panel-title">Features A-Z</h3>
             </div>
             <div class="panel-body">
@@ -105,7 +105,7 @@
                     <li>Has keyboard support</li>
                     <li>Has touch support</li>
                 </ul>
-                <span class="expandible-handle-inline" data-expandible-handle="toggle">show all</span>
+                <span class="expandible-handle-inline expandible-handle-open" data-expandible-handle="open">show all</span>
             </div>
         </div>
     </section>
@@ -127,6 +127,7 @@
             }
             // or we could simply use:
             // Expandible();
+            window.expandibles = Expandible.instances; // expose just so we can test the API.
         });
     </script>
 </body>

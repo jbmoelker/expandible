@@ -1,7 +1,8 @@
 /**
  * Enhance styling, only apply if component is expandible. 
  */
-.is-expandible .expandible-handle {
+.is-expandible .expandible-handle,
+.is-expandible .expandible-handle-inline {
 	cursor: pointer;
 }
 .is-expandible .expandible-handle:before {
@@ -64,6 +65,4 @@
 	content: "+";
 	margin-right: .5em;
 }
-.example3.is-expanded .expandible-handle-inline:before {
-	content: "-";
-}
+.example3.is-expanded .expandible-handle-open { display: none; }

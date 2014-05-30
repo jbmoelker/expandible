@@ -15,10 +15,5 @@ Instal dependencies using `bower install`.
 
 ## To do
 
-* Use `data-expandible-content` as content element.
-* Use `data-expandible-close` to trigger close.
-* Allow multiple `-toggle` and `-close` handles.
-* Only supply to classes `is-expandible` and `is-expanded`.
-* Make items inside component unfocusable when collapsed or automatically expand.
-* Add destroy method.
+* Make items inside component non-focusable when collapsed or automatically expand.
 * Add support for hasAttribute (DOM Level2 method), so we can simply write `data-expandible-open-on-focus` instead of `data-expandible-open-on-focus="true"`?
