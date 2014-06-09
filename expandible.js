@@ -7,6 +7,7 @@
  * The component has support for keyboard and assistive technologies using ARIA properties.
  */
 (function (root, factory) {
+	'use strict';
 	if (typeof define === 'function' && define.amd) {
 		define([
 			'airhooks/forEach',
@@ -27,7 +28,7 @@
 		);
 	}
 }(this, function (forEach, containsClass, addClass, removeClass, addEventListener, removeEventListener) {
-
+	'use strict';
 	var doc = document;
 	var KEY_CODES = {
 		ENTER: 13,
@@ -73,7 +74,7 @@
 		this.content = element.querySelector(this.settings.contentSelector);
 		this.isExpanded = containsClass(element, this.settings.expandedClass);
 
-		// register instance,link elmeents & bind events
+		// register instance,link elements & bind events
 		this.register();
 		this.link();
 		this.bind();
@@ -116,12 +117,10 @@
 	};
 
 	Expandible.prototype.unregister = function() {
-		console.log(Expandible.instances);
 		var index = indexOf(Expandible.instances, this);
 		if(index >= 0) {
 			Expandible.instances.splice(index, 1);
 		}
-		console.log(Expandible.instances);
 	};
 
 	Expandible.prototype.link = function() {
@@ -163,6 +162,11 @@
 			// make handle focusable
 			handle.setAttribute('tabindex', 0);
 
+			// prevent navigating away by default link behavior
+			addEventListener(handle, 'click', function(event) {
+				event.preventDefault();
+			});
+
 			// toggle on mousedown, enter and space key
 			addEventListener(handle, 'mousedown', function(event){
 				event.preventDefault();
@@ -180,6 +184,7 @@
 				addEventListener(handle, 'focus', function(/*event*/){
 					component.open.call(component);
 				});
+				if(handle.hasFocus){ component.open(); }
 			}
 		});
 		// link handles
@@ -267,17 +272,17 @@
 	}
 
 	/**
-	 * Shallow extend first array with properties of a second array.
-	 * @param {Array} arr1
-	 * @param {Array} arr2
+	 * Shallow extend first object with properties of a second object.
+	 * @param {Object} obj1
+	 * @param {Object} obj2
 	 */
-	function extend(arr1, arr2) {
-		for (var prop in arr2) {
-			if (arr2.hasOwnProperty(prop)) {
-				arr1[prop] = arr2[prop];
+	function extend(obj1, obj2) {
+		for (var prop in obj2) {
+			if (obj2.hasOwnProperty(prop)) {
+				obj1[prop] = obj2[prop];
 			}
 		}
-		return arr1;
+		return obj1;
 	}
 
 	/**

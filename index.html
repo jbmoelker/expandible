@@ -13,7 +13,9 @@
     <section>
         <h2>Example 1: Default expanded or collapsed</h2>
         <p>Expandible component is collapsed by default. To expand in initial state add <code>is-expanded</code> class.</p>
-        <div class="example1 panel panel-default" data-expandible>
+        <div class="example1 panel panel-default" data-expandible
+             data-expandible-open-on-focus="true"
+             data-expandible-close-on-blur="true">
             <div class="panel-heading expandible-handle"
                 data-expandible-handle="toggle">
                 <h3 class="panel-title">Features A-Z</h3>
@@ -121,13 +123,7 @@
     <script>
         require(['expandible'], function(Expandible){
             // automatically turn all elements with `data-expandible-element` attr into expandible components.
-            var elements = document.querySelectorAll('[data-expandible]');
-            for (var index = 0, length = elements.length; index < length; index++) {
-                new Expandible(elements[index]);
-            }
-            // or we could simply use:
-            // Expandible();
-            window.expandibles = Expandible.instances; // expose just so we can test the API.
+            window.expandibles = Expandible(); // expose just so we can test the API.
         });
     </script>
 </body>
