@@ -62,6 +62,7 @@
 	Expandible.instances = [];
 
 	/**
+	 * Construct component by extending HTML elements and binding event listeners.
 	 * @param {HTMLElement} [element] - (See constructor)
 	 * @param {Object} [options] - (See constructor)
 	 */
@@ -87,6 +88,10 @@
 		return this;
 	};
 
+	/**
+	 * Removes all dom changes and event listeners added by this component.
+	 * @returns {HTMLElement|*}
+	 */
 	Expandible.prototype.destroy = function () {
 		this.unregister();
 		this.unlink();
@@ -123,6 +128,11 @@
 		}
 	};
 
+	/**
+	 * Link content and handles using ARIA roles and set initial states (hidden & expanded).
+	 * If elements have no IDs, we create unique ones first.
+	 * @returns {Expandible}
+	 */
 	Expandible.prototype.link = function() {
 		var component = this;
 		// assign IDs
@@ -131,23 +141,29 @@
 		// link content elements
 		this.content.setAttribute('role', 'region');
 		this.content.setAttribute('aria-labelledby', component.handle.id);
-		this.content.setAttribute('aria-expanded', component.isExpanded);
+		this.content.setAttribute('aria-hidden', !component.isExpanded);
 		// link handles
 		forEach(this.handles, function(handle){
 			handle.setAttribute('role', 'button');
 			handle.setAttribute('aria-controls', component.content.id);
+			handle.setAttribute('aria-expanded', component.isExpanded);
 		});
 		return this;
 	};
 
+	/**
+	 * Remove all (ARIA) attributes added to link the component's content & handles.
+	 * @returns {Expandible}
+	 */
 	Expandible.prototype.unlink = function() {
 		this.content.removeAttribute('role');
 		this.content.removeAttribute('aria-labelledby');
-		this.content.removeAttribute('aria-expanded');
+		this.content.removeAttribute('aria-hidden');
 		// link handles
 		forEach(this.handles, function(handle){
 			handle.removeAttribute('role');
 			handle.removeAttribute('aria-controls');
+			handle.removeAttribute('aria-expanded');
 		});
 		return this;
 	};
@@ -206,7 +222,10 @@
 		var component = this, element = this.element, settings = this.settings;
 		isExpanded = (isExpanded !== undefined) ? isExpanded : !component.isExpanded;
 		if(isExpanded){ addClass(element, settings.expandedClass); } else { removeClass(element, settings.expandedClass); }
-		this.content.setAttribute('aria-expanded', isExpanded);
+		forEach(this.handles, function(handle){
+			handle.setAttribute('aria-expanded', isExpanded);
+		});
+		this.content.setAttribute('aria-hidden', !isExpanded);
 		component.isExpanded = isExpanded;
 		var allNodes = doc.querySelectorAll('*');
 

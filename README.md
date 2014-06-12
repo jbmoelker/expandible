@@ -33,6 +33,6 @@ Install dev dependencies using [Node NPM](http://nodejs.org/):
 ## To do
 
 * Add 'hover intent'?
-* Use `aria-hidden` on content and `aria-expanded` on handles?
+* Add docs generator (dgeni) ?
 * Make items inside component non-focusable when collapsed or automatically expand.
 * Add support for hasAttribute (DOM Level2 method), so we can simply write `data-expandible-open-on-focus` instead of `data-expandible-open-on-focus="true"`?
