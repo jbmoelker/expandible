@@ -2,6 +2,9 @@
 .DS_Store
 thumbs.db
 
+# Compiled asset files
+*.min.js
+
 # Source maps
 *.js.map
 
