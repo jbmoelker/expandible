@@ -18,7 +18,7 @@
 			'airhooks/removeEventListener'
 		], factory);
 	} else {
-		root.expendible = factory(
+		root.expandible = factory(
 			airhooks.forEach,
 			airhooks.containsClass,
 			airhooks.addClass,
